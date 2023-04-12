@@ -1,0 +1,18 @@
+commit-msg:
+  commands:
+    commitlint:
+      run: "commitlint --edit={1}"
+pre-commit:
+  commands:
+    fish_indent:
+      tags: style
+      glob: "*.fish"
+      run: fish_indent -c {staged_files}
+    markdownlint:
+      tags: documentation style
+      glob: "*.md"
+      run: markdownlint {staged_files}
+    yaml-prettier:
+      tags: style
+      glob: "*.{yml,yaml}"
+      run: prettier -c {staged_files}
